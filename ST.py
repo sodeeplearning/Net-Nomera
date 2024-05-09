@@ -376,4 +376,4 @@ def jpg_tensor (image):
     return transform(Image.open(image))
 
 def imshow(tensor):
-    return plt.imshow(tensor.detach().reshape(1, 28, 28).cpu().permute(1, 2, 0))
+    return plt.imshow(tensor.detach().cpu().permute(1, 2, 0))
