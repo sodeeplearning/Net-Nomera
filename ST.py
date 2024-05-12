@@ -63,7 +63,7 @@ class Model_Using(torch.nn.Module):
         super().__init__()
         self.device = device
         self.dtype = dtype
-        self.Model = model.to(device=self.device, dtype=self.dtype)
+        self.Model = model.to(device=self.device)
         self.is_trained = False
         self.regularizator = Regularization(self.Model)
 
@@ -80,6 +80,7 @@ class Model_Using(torch.nn.Module):
             use_reg=False,
             reg_level=1,
             reg_lamb=1e-4,
+            optimizer = 0,
             is_sched_use=True,
             scheduler_freq=500,
             scheduler_gamma=0.5,
@@ -87,9 +88,9 @@ class Model_Using(torch.nn.Module):
             show_every=50,
     ):
         self.optimizer = torch.optim.SGD(
-            self.Model.parametres(),
+            self.Model.parameters(),
             lr=learning_rate
-        )
+        ) if optimizer == 0 else torch.optim.Adam(self.Model.parameters(), lr=learning_rate)
 
         self.scheduler = torch.optim.lr_scheduler.ExponentialLR(self.optimizer,
                                                                 gamma=scheduler_gamma)
@@ -103,7 +104,7 @@ class Model_Using(torch.nn.Module):
             batch = torch.randint(high=train_X.shape[0], size=[batch_size])
 
             y_pred = self.Model(train_X[batch].to(self.device))
-            train_loss = loss_func(y_pred, train_y[batch]) + self.regularizator.Regularization(
+            train_loss = loss_func(y_pred, train_y[batch // 5]) + self.regularizator.Regularization(
                 level=reg_level,
                 lamb=reg_lamb,
             ) * use_reg
@@ -117,7 +118,7 @@ class Model_Using(torch.nn.Module):
                 with torch.no_grad():
                     val_batch = torch.randint(high=val_X.shape[0], size=[val_batch_size])
                     val_pred = self.Model(val_X[val_batch])
-                    val_loss = loss_func(val_pred, val_y[batch])
+                    val_loss = loss_func(val_pred, val_y[val_batch // 5])
 
                     losses["val"].append(val_loss.item())
 
@@ -135,6 +136,8 @@ class Model_Using(torch.nn.Module):
 
             if epoch % scheduler_freq == 0 and is_sched_use:
                 self.scheduler.step()
+
+            print(f"{epoch} epoch now")
 
         self.is_trained = True
 
@@ -169,6 +172,9 @@ class Model_Using(torch.nn.Module):
 
     def Info(self, input_shape):
         return torchsummary.summary(self.Model, torch.zeros(input_shape))
+
+    def get_model(self):
+        return self.Model
 
 
 class Residual_Block(torch.nn.Module):
