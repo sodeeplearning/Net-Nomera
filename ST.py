@@ -100,6 +100,8 @@ class Model_Using(torch.nn.Module):
         val_batch_size = min(val_X.shape[0], batch_size)
 
         for epoch in range(1, num_of_epochs + 1):
+            print(f"{epoch} epoch now")
+
             self.optimizer.zero_grad()
             batch = torch.randint(high=train_X.shape[0], size=[batch_size])
 
@@ -137,7 +139,7 @@ class Model_Using(torch.nn.Module):
             if epoch % scheduler_freq == 0 and is_sched_use:
                 self.scheduler.step()
 
-            print(f"{epoch} epoch now")
+        print("Teaching has been complete successfully")
 
         self.is_trained = True
 
@@ -356,7 +358,7 @@ class Conv(torch.nn.Module):
             output_channels,
             kernel_size=3,
             stride=1,
-            padding=1,
+            padding=0,
             activation=torch.nn.ReLU(),
             bias=True,
     ):
