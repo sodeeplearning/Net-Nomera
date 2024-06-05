@@ -20,8 +20,8 @@ def xml_perf(path):
     with open(path, 'r') as f:
         file = f.read()
         massive = file.split('\n')
-        return (string_perf(massive[-7]) / 1552, string_perf(massive[-6]) / 2592, string_perf(massive[-5]) / 1552,
-                string_perf(massive[-4]) / 2592)
+        return (string_perf(massive[-7]) / 2592, string_perf(massive[-6]) / 1552, string_perf(massive[-5]) / 2592,
+                string_perf(massive[-4]) / 1552)
 
 
 def get_data(path):
