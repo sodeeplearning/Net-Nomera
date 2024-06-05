@@ -27,12 +27,12 @@ def xml_perf(path):
 def get_data(path):
     massive = ST.getting_files(path)
     bbox_tensor = torch.zeros((len(massive) * 5, 100, 4))
-    class_tensor = torch.zeros((len(massive) * 5, 100, 1), dtype=torch.long)
+    class_tensor = torch.zeros((len(massive) * 5, 100, 2))
 
     for ind, current_file in enumerate(massive):
         for current_ind in range(5):
             bbox_tensor[ind * 5 + current_ind][0] = torch.tensor(xml_perf(current_file))
-            class_tensor[ind * 5 + current_ind][0] = 1
+            class_tensor[ind * 5 + current_ind][0][1] = 1
 
     return bbox_tensor, class_tensor
 
