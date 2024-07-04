@@ -3,7 +3,7 @@ import zipfile
 import requests
 import torch
 
-import ST
+import simpletorch as ST
 
 print("Downloading has been started")
 
