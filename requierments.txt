@@ -1,0 +1,4 @@
+jupyter==1.0.0
+torch==2.2.2
+ultralytics==8.2.45
+torch_summary==1.4.5
