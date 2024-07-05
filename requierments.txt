@@ -1,5 +1,5 @@
-jupyter
-torch
-ultralytics
-easyocr
-opencv-python
+jupyter==1.0.0
+torch==2.2.2
+ultralytics==8.2.45
+easyocr==1.7.1
+opencv-python==4.9.0.80
