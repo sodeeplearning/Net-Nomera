@@ -3,7 +3,6 @@ import torch
 from ultralytics import YOLO
 import matplotlib.pyplot as plt
 from torchvision import transforms
-import simpletorch as ST
 import easyocr
 import utils
 from PIL import Image
@@ -14,27 +13,27 @@ class CNN_Model (torch.nn.Module):
     super().__init__()
 
     self.convolutions = torch.nn.Sequential(*[
-        ST.Conv_Block(
+        simpletorch.Conv_Block(
             input_channels = 3,
             output_channels = 128,
         ),
-        ST.Conv_Block(
+        simpletorch.Conv_Block(
             input_channels = 128,
             output_channels = 128,
         ),
-        ST.Conv_Block(
+        simpletorch.Conv_Block(
             input_channels = 128,
             output_channels = 256,
         ),
-        ST.Conv_Block(
+        simpletorch.Conv_Block(
             input_channels = 256,
             output_channels = 512,
         ),
-        ST.Conv_Block(
+        simpletorch.Conv_Block(
             input_channels = 512,
             output_channels = 512,
         ),
-        ST.Conv_Block(
+        simpletorch.Conv_Block(
             input_channels = 512,
             output_channels = 512,
         ),
@@ -79,7 +78,7 @@ class Number_detection:
     classes_with_number = [2, 3, 5, 7]
     transform = transforms.Resize((512, 512))
     answer_images = torch.zeros((0, 3, 512, 512))
-    image_tensor = ST.jpg_tensor(image_path)
+    image_tensor = simpletorch.jpg_tensor(image_path)
     y_shape, x_shape = image_tensor.shape[-2:]
     num_of_preds = 0
 
@@ -103,7 +102,7 @@ class Number_detection:
     x_max = max(x0, x1)
     y_min = min(y0, y1)
     y_max = max(y0, y1)
-    ST.imshow(image)
+    simpletorch.imshow(image)
     plt.vlines(x_min, y_min, y_max, color=color)
     plt.vlines(x_max, y_max, y_min, color=color)
     plt.hlines(y_min, x_min, x_max, color=color)
@@ -163,7 +162,7 @@ class Number_recognizer:
     for ind, current_image in enumerate(received_images):
       current_image.save(os.path.join(self.images_dir, f"image{ind}.jpg"))
 
-    for ind, current_path in enumerate(ST.getting_files(self.images_dir)):
+    for ind, current_path in enumerate(simpletorch.getting_files(self.images_dir)):
       current_output = self.text_reader.recognize(current_path,
                                                   allowlist = self.characters,
                                                   detail = 0)
