@@ -1,0 +1,7 @@
+torch==2.2.2
+jupyter==1.0.0
+ultralytics==8.2.45
+opencv-python==4.9.0.80
+pandas==2.2.2
+easyocr==1.7.1
+torch-summary==1.4.5
