@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c6a068a-413a-4a7c-9d65-ddeef1ba54d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpletorch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks/yolo_cnn_easyocr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/networks/yolo_cnn_easyocr/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +58,11 @@
       <recent name="$PROJECT_DIR$/weights" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/simpletorch" />
       <recent name="$PROJECT_DIR$/networks/yolo_cnn_easyocr" />
       <recent name="$PROJECT_DIR$/cnn_models" />
       <recent name="$PROJECT_DIR$/weights" />
       <recent name="$PROJECT_DIR$/datasets" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SharedIndexes">
