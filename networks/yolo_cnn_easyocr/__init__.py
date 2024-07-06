@@ -6,7 +6,7 @@ from torchvision import transforms
 import easyocr
 import utils
 from PIL import Image
-import simpletorch as ST
+import ST
 from time import sleep
 
 class CNN_Model (torch.nn.Module):
