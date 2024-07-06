@@ -2,6 +2,10 @@
 Neural network for recognizing car numbers
 
 ⚠⚠⚠ NOTE that's only Beta version that can have some problems that will be likely fixed in the subsequent versions.
+
+If you found a bug, please report it to issues
+
+
 ## Authors:
 
 Main AI developer and a Head of the project: [Vitaliy Petreev](https://github.com/sodeeplearning)
@@ -12,18 +16,12 @@ Dataset creator [Stepan Khozhempo](https://github.com/teleportx)
 ## Installation Guide
 #### For Linux:
 ```bash
-sudo apt-get update
-sudo apt-get install git
-sudo apt-get install python3.12 python3-pip
 git clone https://github.com/sodeeplearning/Net-Nomera
 cd Net-Nomera
 python -m pip install -r requirements.txt
 python main.py
 ```
 #### For Windows:
-Install the [Python](https://www.python.org/downloads/windows/).
-Install the [Git](https://git-scm.com/download/win).
-
 Then pass these commands through a console:
 ```bash
 git clone https://github.com/sodeeplearning/Net-Nomera
@@ -55,4 +53,4 @@ If you want to make Net Nomer'a better, you can upload your models into this pro
         case <num_of_models> + 1:
             import networks.<your_model_name> 
     ```
-7) Get pull request
+7) Make pull request
